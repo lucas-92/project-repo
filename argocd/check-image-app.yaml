@@ -18,6 +18,7 @@ spec:
       jsonPointers:
         - /rules
   syncPolicy:
-    automated
+    automated:
       prune: true
       selfHeal: true
+
