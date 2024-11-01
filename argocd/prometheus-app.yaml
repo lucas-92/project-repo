@@ -22,6 +22,11 @@ spec:
             server:
               service:
                 type: LoadBalancer
+  ignoreDifferences:
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    jsonPointers:
+      - /rules
   syncPolicy:
     automated:
       prune: true

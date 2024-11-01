@@ -52,6 +52,11 @@ spec:
               gnetId: 10000
               revision: 1
               datasource: Prometheus
+  ignoreDifferences:
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    jsonPointers:
+      - /rules
   syncPolicy:
     automated:
       prune: true
