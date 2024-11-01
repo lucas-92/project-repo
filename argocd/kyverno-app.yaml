@@ -4,15 +4,23 @@ metadata:
   name: kyverno
   namespace: argocd
 spec:
+  destination:
+    namespace: kyverno
+    server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: 'https://github.com/lucas-92/project-repo.git'
-    path: helm/kyverno
-    targetRevision: HEAD
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: kyverno
+    chart: kyverno
+    repoURL: https://kyverno.github.io/kyverno
+    targetRevision: 2.6.0
+  ignoreDifferences:
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    jsonPointers:
+      - /rules
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
