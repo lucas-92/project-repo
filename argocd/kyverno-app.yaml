@@ -6,11 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://kyverno.github.io/kyverno/
-    chart: kyverno
-    targetRevision: "2.0.*"
+    repoURL: 'https://github.com/lucas-92/project-repo.git'
+    path: helm/kyverno
+    targetRevision: HEAD
   destination:
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
     namespace: kyverno
   syncPolicy:
     automated:
