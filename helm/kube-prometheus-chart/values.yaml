@@ -1,8 +1,0 @@
-prometheus:
-  prometheusSpec:
-    serviceMonitorSelector: {}
-    podMonitorSelector: {}
-
-alertmanager:
-  alertmanagerSpec:
-    serviceMonitorSelector: {}
