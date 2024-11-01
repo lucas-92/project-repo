@@ -9,17 +9,15 @@ spec:
     repoURL: https://github.com/lucas-92/project-repo.git
     path: helm/kyverno
     targetRevision: main
-  ignoreDifferences:
-  - group: rbac.authorization.k8s.io
-    kind: ClusterRole
-    jsonPointers:
-      - /rules
-    directory:
-      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: kyverno
+  ignoreDifferences:
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      jsonPointers:
+        - /rules
   syncPolicy:
-    automated:
+    automated
       prune: true
       selfHeal: true

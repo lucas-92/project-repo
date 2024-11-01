@@ -19,17 +19,18 @@ spec:
       targetRevision: 19.7.2
       helm:
         values: |
-            server:
-              service:
-                type: LoadBalancer
+          server:
+            service:
+              type: LoadBalancer
   ignoreDifferences:
-  - group: rbac.authorization.k8s.io
-    kind: ClusterRole
-    jsonPointers:
-      - /rules
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      jsonPointers:
+        - /rules
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - Replace=true
