@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: check-image-policy
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/lucas-92/project-repo.git
+    path: helm/kyverno
+    targetRevision: main
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kyverno
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
