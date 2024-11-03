@@ -7,7 +7,7 @@ spec:
   project: default # O projeto do ArgoCD ao qual a aplicação pertence
   source:
     path: examples/continuous-delivery/argocd/kube-prometheus
-    repoURL: git@github.com:prometheus-operator/kube-prometheus.git
+    repoURL: prometheus-operator/kube-prometheus.git
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc # A URL do servidor Kubernetes
