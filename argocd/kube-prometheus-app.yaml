@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default # O projeto do ArgoCD ao qual a aplicação pertence
   source:
-    repoURL: https://github.com/prometheus-operator/kube-prometheus.git
-    targetRevision: main # A branch ou tag do repositório
-    path: manifests # O diretório contendo os manifestos
+    path: examples/continuous-delivery/argocd/kube-prometheus
+    repoURL: git@github.com:prometheus-operator/kube-prometheus.git
+    targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc # A URL do servidor Kubernetes
     namespace: monitoring # O namespace onde o Kube-Prometheus será implantado
