@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus
-  namespace: argocd # O namespace onde o ArgoCD está instalado
+  name: prometheus
+  namespace: argocd
 spec:
-  project: default # O projeto do ArgoCD ao qual a aplicação pertence
-  source:
-    path: examples/continuous-delivery/argocd/kube-prometheus
-    repoURL: https://github.com/prometheus-operator/kube-prometheus.git
-    targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc # A URL do servidor Kubernetes
-    namespace: monitoring # O namespace onde o Kube-Prometheus será implantado
+    namespace: monitoring
+  project: default
+  source:
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 45.6.0
+    chart: kube-prometheus-stack
   syncPolicy:
     automated:
       selfHeal: true # Habilita a auto-correção em caso de desvios
