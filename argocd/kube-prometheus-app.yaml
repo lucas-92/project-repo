@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus
+  namespace: argocd # O namespace onde o ArgoCD está instalado
+spec:
+  project: default # O projeto do ArgoCD ao qual a aplicação pertence
+  source:
+    repoURL: https://github.com/prometheus-operator/kube-prometheus.git
+    targetRevision: main # A branch ou tag do repositório
+    path: manifests # O diretório contendo os manifestos
+  destination:
+    server: https://kubernetes.default.svc # A URL do servidor Kubernetes
+    namespace: monitoring # O namespace onde o Kube-Prometheus será implantado
+  syncPolicy:
+    automated:
+      selfHeal: true # Habilita a auto-correção em caso de desvios
+    syncOptions:
+    - CreateNamespace=true # Cria o namespace se ele não existir
